@@ -2,7 +2,6 @@ package com.angelaexample.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
 import android.view.View;
@@ -13,8 +12,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageView ball;
-    private TextView
-
+    private TextView respuesta;
 
     private String[] respuestaArray = {"Es cierto", "Definitivamente es así", "Sin duda", "Sí definitivamente", "Puede confiar en él", "Como yo lo veo, sí",
             "Lo más probable", "Perspectiva buena", "Sí", "Las señales apuntan a sí", "Respuesta confusa intente de nuevo", "Pregunte de nuevo más tarde",
@@ -27,22 +25,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //
-        ball =findViewById(R.id.boton);
+        ball = findViewById(R.id.boton);
         //
-        respuestaArray = findViewById(R.id.respuesta);
+        respuesta = findViewById(R.id.respuesta);
 
         ball.setOnClickListener(this);
 
-        Toast.makeText( contextMainActivity.this, text: "Descubre Tu Destino Magic Ball", Toast.LENGTH_SHORT).show();
-    }
-
-    private void show() {
+        Toast.makeText(MainActivity.this, "Buscando tu destino!", Toast.LENGTH_SHORT).show();
     }
 
     @Override
 
-    public void onClick(View v){...}
+    public void onClick(View v) {
 
+        switch (v.getId()) {
+            case R.id.boton:
+                int random = new Random().nextInt(respuestaArray.length);
+                respuesta.setText(respuestaArray[random]);
+
+                break;
+
+
+        }
+
+    }
 }
-
 
